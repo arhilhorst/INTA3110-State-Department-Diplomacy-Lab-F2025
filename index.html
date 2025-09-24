@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TECHNOLOGY: — for good and evil</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Global header with hamburger -->
+  <header class="site-header">
+    <button
+      id="hamburger"
+      class="cutout-btn hamburger"
+      aria-label="Open menu"
+      aria-haspopup="true"
+      aria-controls="menu-overlay"
+      aria-expanded="false"
+    >
+      <span class="visually-hidden">Open menu</span>
+    </button>
+  </header>
+
+  <!-- Overlay Menu -->
+  <div id="menu-overlay" class="menu-overlay" hidden>
+    <nav class="menu" aria-label="Section navigation">
+      <ul>
+        <li><a href="#section-hero" data-section="0">Technology</a></li>
+        <li><a href="#section-sub1" data-section="1">Subteam 1</a></li>
+        <li><a href="#section-sub2" data-section="2">Subteam 2</a></li>
+        <li><a href="#section-sub3" data-section="3">Subteam 3</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="viewport" class="viewport" aria-live="polite">
+    <!-- Section 1: Landing -->
+    <section id="section-hero" class="scene" aria-label="Landing">
+      <div class="scene-inner">
+        <div class="left title-side gradient-hero">
+          <div class="title-wrap">
+            <h1 class="title impact">TECHNOLOGY:</h1>
+            <p class="subtitle serif">(for good and evil)</p>
+          </div>
+        </div>
+        <aside class="right text-side">
+          <div class="text-content">
+            <h2 class="panel-heading serif">STATE DEPARTMENT DIPLOMACY LAB INTA3110</h2>
+            <p class="names serif">
+              Team Lead: Jane Doe<br />
+              Research: John Smith<br />
+              Design: Alex Lee<br />
+              Engineering: Pat Kim
+            </p>
+          </div>
+        </aside>
+        <button
+          class="cutout-btn down-arrow"
+          data-next="1"
+          aria-label="Next section"
+          aria-describedby="tip-hero"
+        ></button>
+        <div id="tip-hero" class="tooltip" role="tooltip">Continue to the subteams</div>
+      </div>
+    </section>
+
+    <!-- Section 2: Subteam 1 -->
+    <section id="section-sub1" class="scene" aria-label="Subteam 1">
+      <div class="scene-inner">
+        <div class="left title-side">
+          <div class="title-wrap">
+            <h1 class="title impact">POLICY</h1>
+            <p class="subtitle serif"><em>Frameworks and governance</em></p>
+          </div>
+        </div>
+        <aside class="right text-side">
+          <div class="text-content">
+            <h3 class="serif">Overview</h3>
+            <p>
+              Policy subteam explores governance models, risk frameworks, and international coordination.
+              Draft charters, evaluate standards, and propose actionable guidelines.
+            </p>
+            <h3 class="serif">Workstreams</h3>
+            <ul>
+              <li>Regulatory landscape mapping</li>
+              <li>Risk assessment templates</li>
+              <li>Stakeholder interviews</li>
+              <li>Policy briefs and recommendations</li>
+            </ul>
+          </div>
+        </aside>
+        <button
+          class="cutout-btn down-arrow"
+          data-next="2"
+          aria-label="Next section"
+          aria-describedby="tip-sub1"
+        ></button>
+        <div id="tip-sub1" class="tooltip" role="tooltip">Continue</div>
+      </div>
+    </section>
+
+    <!-- Section 3: Subteam 2 -->
+    <section id="section-sub2" class="scene" aria-label="Subteam 2">
+      <div class="scene-inner">
+        <div class="left title-side">
+          <div class="title-wrap">
+            <h1 class="title impact">SYSTEMS</h1>
+            <p class="subtitle serif"><em>Architecture and tooling</em></p>
+          </div>
+        </div>
+        <aside class="right text-side">
+          <div class="text-content">
+            <h3 class="serif">Overview</h3>
+            <p>
+              Systems subteam designs scalable architectures, prototypes tools, and evaluates infrastructure tradeoffs.
+            </p>
+            <h3 class="serif">Workstreams</h3>
+            <ol>
+              <li>Reference architectures</li>
+              <li>Build pipelines and automation</li>
+              <li>Security and compliance baselines</li>
+              <li>Observability and SLOs</li>
+            </ol>
+          </div>
+        </aside>
+        <button
+          class="cutout-btn down-arrow"
+          data-next="3"
+          aria-label="Next section"
+          aria-describedby="tip-sub2"
+        ></button>
+        <div id="tip-sub2" class="tooltip" role="tooltip">Continue</div>
+      </div>
+    </section>
+
+    <!-- Section 4: Subteam 3 -->
+    <section id="section-sub3" class="scene" aria-label="Subteam 3">
+      <div class="scene-inner">
+        <div class="left title-side">
+          <div class="title-wrap">
+            <h1 class="title impact">ANALYSIS</h1>
+            <p class="subtitle serif"><em>Data and impact assessment</em></p>
+          </div>
+        </div>
+        <aside class="right text-side">
+          <div class="text-content">
+            <h3 class="serif">Overview</h3>
+            <p>
+              Analysis subteam builds datasets, runs studies, and provides decision support with clear, reproducible methods.
+            </p>
+            <h3 class="serif">Workstreams</h3>
+            <ul>
+              <li>Data acquisition and cleaning</li>
+              <li>Causal and descriptive analyses</li>
+              <li>Dashboards and reporting</li>
+              <li>Validation and robustness checks</li>
+            </ul>
+          </div>
+        </aside>
+        <button
+          class="cutout-btn down-arrow"
+          data-next="0"
+          aria-label="Back to top"
+          aria-describedby="tip-sub3"
+        ></button>
+        <div id="tip-sub3" class="tooltip" role="tooltip">Continue</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

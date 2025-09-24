@@ -83,15 +83,22 @@
       if (overlay.hidden) openMenu(); else closeMenu();
     });
   
+    // Menu links: close overlay first, then navigate
     links.forEach(a => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const idx = parseInt(a.dataset.section, 10);
-        closeMenu();
-        goToSection(idx);
-      });
+        a.addEventListener('click', (e) => {
+            e.preventDefault();
+            const idx = parseInt(a.dataset.section, 10);
+    
+            // Close the menu overlay immediately
+            closeMenu();
+        
+            // Navigate after a microtask so focus returns cleanly to the page
+            Promise.resolve().then(() => {
+                goToSection(idx);
+            });
+        });
     });
-  
+    
     // Keyboard navigation for sections
     window.addEventListener('keydown', (e) => {
       const activeEl = document.activeElement;

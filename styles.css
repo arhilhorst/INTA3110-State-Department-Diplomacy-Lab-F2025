@@ -266,6 +266,14 @@ body {
   place-items: center;
   z-index: 40;
 }
+.menu-overlay {
+    opacity: 1;
+    transition: opacity 180ms ease;
+}
+.menu-overlay[hidden] {
+    opacity: 0;
+    pointer-events: none;
+}
 .menu {
   background: #fff;
   color: #111;

@@ -138,6 +138,17 @@ body {
   display: contents; /* allow children to align to grid directly */
 }
 
+@keyframes nudgeDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(4px); }
+  }
+  .down-arrow {
+    animation: nudgeDown 1600ms ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .down-arrow { animation: none; }
+  }
+
 .left.title-side {
   position: relative;
   padding: 6vh 5vw;
@@ -184,39 +195,61 @@ body {
 
 /* Down arrow cutout */
 .down-arrow {
-  position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: var(--btn-size);
+    height: var(--btn-size);
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    box-shadow:
+      inset 0 0 0 2px rgba(0,0,0,0.65),
+      0 2px 8px rgba(0,0,0,0.2);
 }
 .down-arrow::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--bg);
-  /* Arrow cutout via mask */
-  -webkit-mask:
-    radial-gradient(circle at 50% 50%, #000 64%, transparent 65%) ,
-    linear-gradient(#000 0 0) bottom/20% 22% no-repeat;
-  -webkit-mask-composite: xor;
-  mask:
-    radial-gradient(circle at 50% 50%, #000 64%, transparent 65%),
-    linear-gradient(#000 0 0) bottom/20% 22% no-repeat;
-  /* Create a triangle arrow shaft cutout */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    /* Mask 1: base circle. Mask 2: chevron (transparent to create the hole). */
+    -webkit-mask:
+      radial-gradient(circle at 50% 50%, #000 66%, transparent 67%),
+      /* chevron built from two rectangles forming a V; we subtract it via xor below */
+      linear-gradient(#000 0 0) center/18% 12% no-repeat,
+      linear-gradient(#000 0 0) center/18% 12% no-repeat;
+    -webkit-mask-position: 50% 50%, 50% 58%, 50% 58%;
+    -webkit-mask-composite: source-over, xor, xor;
+    mask:
+      radial-gradient(circle at 50% 50%, #000 66%, transparent 67%),
+      linear-gradient(#000 0 0) center/18% 12% no-repeat,
+      linear-gradient(#000 0 0) center/18% 12% no-repeat;
+    mask-position: 50% 50%, 50% 58%, 50% 58%;
+    /* rotate the side bars to form the V arrow */
+    transform: translateZ(0);
 }
 .down-arrow::after {
   /* Make the triangle part by masking a triangle in the circle */
+  /* Angle the two bars to form the chevron */
   content: "";
   position: absolute;
   inset: 0;
   background: var(--bg);
   -webkit-mask:
-    radial-gradient(circle at 50% 50%, #000 64%, transparent 65%),
-    polygon(50% 70%, 35% 52%, 65% 52%) /* triangle head */;
+    radial-gradient(circle at 50% 50%, #000 66%, transparent 67%),
+    /* left bar */
+    linear-gradient(#000 0 0) left 50% bottom 42%/3% 18% no-repeat,
+    /* right bar */
+    linear-gradient(#000 0 0) right 50% bottom 42%/3% 18% no-repeat;
+  /* rotate bars to 45° to make a chevron; use composite xor to subtract from circle */
+  -webkit-mask-composite: source-over, xor, xor;
   mask:
-    radial-gradient(circle at 50% 50%, #000 64%, transparent 65%),
-    polygon(50% 70%, 35% 52%, 65% 52%);
-  mix-blend-mode: normal;
+    radial-gradient(circle at 50% 50%, #000 66%, transparent 67%),
+    linear-gradient(#000 0 0) left 50% bottom 42%/3% 18% no-repeat,
+    linear-gradient(#000 0 0) right 50% bottom 42%/3% 18% no-repeat;
+  transform: rotate(45deg);
 }
 
 /* Hover glow */
